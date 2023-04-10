@@ -1,0 +1,28 @@
+<ion-content color="dark">
+    <div class="flex-center">
+      <form [formGroup] = "form">
+        <ion-card color="medium">
+          <ion-card-header>
+            <ion-card-title>PruebaApp</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item color="medium">
+              <ion-input label="Email" labelPlacement="floating" 
+                  type="email" formControlName="email" placeholder="Email@domain.com" [(ngModel)]="email"></ion-input>
+            </ion-item>
+            <ion-label class="flex-display" color="danger" *ngIf="form.get('email')?.touched && !form.get('email')?.valid ">Formato de Email Invalido</ion-label>
+            <ion-item color="medium">
+                <ion-input label="Contraseña" labelPlacement="floating" 
+                    type={{mostrarPassword}} formControlName="password" placeholder="Contraseña" 
+                    [clearInput]="true" [clearOnEdit]="false" [(ngModel)]="password">
+                  </ion-input>
+              <ion-icon name="eye" (click)="verPassword()"></ion-icon>
+            </ion-item>
+            <ion-button color="dark" size="full" (click)="login()" [disabled]="!form.valid">Login</ion-button>
+            <ion-label class="flex-display" color="danger" *ngIf="datosInvalidos">Autentificación Invalida</ion-label>
+          </ion-card-content>
+        </ion-card>
+      </form>
+      <ion-img src="../../../assets/icon.png"></ion-img>
+    </div>
+</ion-content>
